@@ -16,8 +16,8 @@
           <h1 class="form-text">Connexion</h1>
           <form action="models/script-connect.php" method="post">
             <div class="form-group">
-              <label for="nom.prenom">Identifiant</label>
-              <input type="text" name="name" class="form-control" placeholder="martin.michel" required>
+              <label for="email">Identifiant</label>
+              <input type="email" name="email" class="form-control" placeholder="martin.michel@free.fr" required>
             </div>
             <div class="form-group">
               <label for=password>Mot de passe</label>
