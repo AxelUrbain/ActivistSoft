@@ -1,3 +1,10 @@
+<?php
+require 'models/script-connect.php';
+require 'models/dbconfig.php';
+
+$result = connect_activist($bdd);
+?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <?php include('template/header.php'); ?>
@@ -14,7 +21,9 @@
         <div class="col-lg-4 col-md-4"></div>
         <div class="col-lg-4 col-md-4">
           <h1 class="form-text">Connexion</h1>
-          <form action="models/script-connect.php" method="post">
+          <!-- Gestion des erreurs de connexion -->
+          <center> <?php echo $result; ?> </center>
+          <form action="index.php" method="post">
             <div class="form-group">
               <label for="email">Identifiant</label>
               <input type="email" name="email" class="form-control" placeholder="martin.michel@free.fr" required>
@@ -29,7 +38,7 @@
               <input type="checkbox" name="captcha" class="form-check-input" required>
               <label class="form-check-label">Je ne suis pas un robot</label>
             </div>
-            <button type="submit" class="btn btn-color btn-lg btn-block">Connexion</button>
+            <button type="submit" name="button_connect" class="btn btn-color btn-lg btn-block">Connexion</button>
           </form>
         </div>
         <div class="col-lg-4 col-md-4"></div>

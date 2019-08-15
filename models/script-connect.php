@@ -2,12 +2,11 @@
 require 'dbconfig.php';
 
 function connect_activist($bdd){
-  $welcomeMessage = array();
   $error = array();
   if(isset($_POST['button_connect'])){
     //Vérification des champs
-    if(empty($_POST['name']) OR empty($_POST['password'])){
-      if(empty($_POST['name'])){
+    if(empty($_POST['email']) OR empty($_POST['password'])){
+      if(empty($_POST['email'])){
         $error = '<div class="alert alert-danger">ERREUR - Le champ utilisateur est vide !</div>';
       }
       if(empty($_POST['password'])){
@@ -16,19 +15,15 @@ function connect_activist($bdd){
       return $error;
     }
     else{
-      $login = htmlspecialchars($_POST['name']);
+      $email = htmlspecialchars($_POST['email']);
       $password = htmlspecialchars($_POST['password']);
-      //Récupération nom Prénom
-      $user = explode(".",$login);
-      $name = $user[0];
-      $firstname = $user[1];
 
       $reqconnect = $bdd->prepare("SELECT * FROM activist WHERE email = ?");
       $reqconnect->execute(array($email));
       $userexist = $reqconnect->rowCount();
 
       if($userexist == 1){
-        $user = $reqconnect->fecth();
+        $user = $reqconnect->fetch();
         //récupérer le mdp
         $password_hashed = $user['password'];
         if(password_verify($password, $password_hashed)){
