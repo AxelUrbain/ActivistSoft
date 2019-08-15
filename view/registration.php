@@ -1,3 +1,9 @@
+<?php
+require '../models/script-registration.php';
+require '../models/dbconfig.php';
+
+$result = registration($bdd);
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <?php include('../template/header.php'); ?>
@@ -14,7 +20,9 @@
         <div class="col-lg-4 col-md-4"></div>
         <div class="col-lg-4 col-md-4">
           <h1 class="form-text">Inscription</h1>
-          <form action="../models/script-registration.php" method="post">
+          <!-- RESULTAT DU SCRIPT D'INSCRIPTION -->
+          <center> <?php echo $result; ?> </center>
+          <form action="registration.php" method="post">
             <div class="row">
               <div class="col form-group">
                 <label for="name">Nom</label>
@@ -67,7 +75,7 @@
               <input type="checkbox" class="form-check-input" required>
               <label class="form-check-label" for="">Je ne suis pas un robot</label>
             </div>
-            <button type="submit" name="submit" class="btn btn-color btn-lg btn-block">Vous inscrire</button>
+            <button type="submit" name="submit_registration" class="btn btn-color btn-lg btn-block">Vous inscrire</button>
           </form>
         </div>
         <div class="col-lg-4 col-md-4"></div>
