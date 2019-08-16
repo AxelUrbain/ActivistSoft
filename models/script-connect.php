@@ -30,19 +30,28 @@ function connect_activist($bdd){
           if(!empty($user['confirmkey']) AND $user['confirme'] == 1){
             //Déterminer le role de l'utilisateur
             if(!empty($user['role'])){
-              if($user['role'] == 0){
+              if($user['role'] == 1){
+                session_start();
+                $_SESSION['email'] = $email;
+                $_SESSION['id_role'] = $user['role'];
                 //Connexion en tant que visiteur
-                header('Location: ../view/visitor.php');
+                header('Location: view/visitor.php');
                 exit();
               }
-              elseif($user['role'] == 1){
+              elseif($user['role'] == 2){
+                session_start();
+                $_SESSION['email'] = $email;
+                $_SESSION['id_role'] = $user['role'];
                 //Connexion en tant que militant
-                header('Location: ../view/map_interactiv.php');
+                header('Location: view/map_interactiv.php');
                 exit();
               }
-              elseif ($user['role'] == 2) {
+              elseif ($user['role'] == 3) {
+                session_start();
+                $_SESSION['email'] = $email;
+                $_SESSION['id_role'] = $user['role']; 
                 //Connexion en tant que administrateur
-                header('Location: ../view/panel_admin.php');
+                header('Location: view/panel_admin.php');
                 exit();
               }
               else {
