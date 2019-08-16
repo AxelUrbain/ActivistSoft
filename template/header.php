@@ -14,5 +14,5 @@ integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706t
 <!-- Feuille de style CSS -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <title>LFI-Candidat</title>
+  <title>ActivistSoft</title>
 </head>
