@@ -31,8 +31,13 @@ function registration($bdd){
           //Vérifier le numéro de téléphone
           if(preg_match("/^((\+|00)33\s?|0)[67](\s?\d{2}){4}$/",$phone)){
             //SI Vérifier si le numéro est déjà utilisé dans la bdd
-            //..................................................
-
+            $reqphone = $bdd->prepare("SELECT phone FROM activist WHERE phone = ?");
+            $reqphone->execute(array($phone));
+            $existphone = $reqphone->rowCount();
+            if($existphone == 1){
+              $error = '<div class="alert alert-danger">ERREUR - Le numéro est déjà utilisé !</div>';
+              return $error;
+            }
             //SINON Vérifier l'age
             if(preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$ddn)){
               //Vérifier si l'utilisateur est majeur
@@ -58,7 +63,13 @@ function registration($bdd){
                     //SINON Vérification de l'adresse mail
                     if(preg_match("/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/",$email)){
                       //SI Vérifier si l'adresse mail est déjà utilisé par un utilisateur
-                      //..............................................................
+                      $reqemail = $bdd->prepare("SELECT email FROM activist WHERE email = ?");
+                      $reqemail->execute(array($email));
+                      $existemail = $reqemail->rowCount();
+                      if($existemail == 1){
+                        $error = '<div class="alert alert-danger">ERREUR - Email déjà utilisé !</div>';
+                        return $error;
+                      }
                       //SINON ---- SCRIPT ENVOIE UN MAIL DE CONFIRMATION
                       //Génération d'une clé aléatoire
                       $lengthkey = 15;
