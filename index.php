@@ -31,7 +31,7 @@ $result = connect_activist($bdd);
             <div class="form-group">
               <label for=password>Mot de passe</label>
               <input type="password" name="password" class="form-control" placeholder="Mot de Passe" required>
-              <a href="view/mdpforget.php"><small id="mdpforget" class="text-muted">Mot de passe oublié ?</small></a>
+              <a href="view/recuperate_password.php"><small id="mdpforget" class="text-muted">Mot de passe oublié ?</small></a>
               <a href="view/registration.php"><small id="registration" class="text-muted">Vous souhaitez vous inscrire ?</small></a>
             </div>
             <div class="form-group form-check">

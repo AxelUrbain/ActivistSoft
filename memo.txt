@@ -1,0 +1,12 @@
+Page de réucpération password :
+  - Demande adresse Email
+  - Sécurisation et validité de l'Adresse
+  - Si l'adresse est déjà présente dans la bdd
+  - Si ok => Envoie d'un code par mail
+      BDD => Table "recuperation" (id, mail, code)
+  - Stockage du mail dans $_SESSION["recupmail"]
+  - Stockage du code dans $_SESSION['recupcode']
+  - Redirection vers une page d'entrée du code
+  - Vérifier la correspondance entre les codes
+  - Si ok => Redirection vers une page de changement de mot de passes
+  - Si les 2 mdp correpondent => hashage du mdp et update dans la table
