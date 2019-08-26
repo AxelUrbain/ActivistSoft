@@ -14,24 +14,31 @@
         <div class="col-lg-4 col-md-4"></div>
         <div class="col-lg-4 col-md-4">
           <h4 class="">Récupération de mot de passe</h4>
-            <?php if($_GET['section'] == 'code') { ?>
+            <?php if(isset($_GET['section'])) {
+              if($_GET['section'] == 'code'){ ?>
               Un code de vérification vous a été envoyé par mail: <?= $_SESSION['recup_mail'] ?>
               <br/>
               <form method="post">
-                <input type="text" placeholder="Code de vérification" name="verif_code"/><br/>
-                <input type="submit" value="Valider" name="verif_submit"/>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Code de vérification" name="verif_code" required/><br/>
+                  <button type="submit" name="verif_submit" class="btn btn-secondary btn-lg btn-block">Valider</button>
+                </div>
               </form>
             <?php } elseif($_GET['section'] == "changemdp") { ?>
             Nouveau mot de passe pour <?= $_SESSION['recup_mail'] ?>
             <form method="post">
-              <input type="password" placeholder="Nouveau mot de passe" name="change_mdp"/><br/>
-              <input type="password" placeholder="Confirmation du mot de passe" name="change_mdpc"/><br/>
-              <input type="submit" value="Valider" name="change_submit"/>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Nouveau mot de passe" name="change_mdp"/><br/>
+                <input type="password" class="form-control" placeholder="Confirmation du mot de passe" name="change_mdpc"/><br/>
+                <button type="submit" name="change_submit" class="btn btn-secondary btn-lg btn-block">Valider</button>
+              </div>
             </form>
-            <?php } else { ?>
+            <?php } } else { ?>
             <form method="post">
-              <input type="email" placeholder="Votre adresse mail" name="recup_mail"/><br/>
-              <input type="submit" value="Valider" name="recup_submit"/>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Votre adresse mail" name="recup_mail"/><br/>
+                <button type="submit" name="recup_submit" class="btn btn-secondary btn-lg btn-block">Valider</button>
+              </div>
             </form>
             <?php } ?>
             <?php if(isset($error)) { echo '<span style="color:red">'.$error.'</span>'; } else { echo ""; } ?>

@@ -30,13 +30,13 @@ if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
                $recup_insert->execute(array($recup_mail,$recup_code));
             }
             $header="MIME-Version: 1.0\r\n";
-         $header.='From:"PrimFX.com"<support@primfx.com>'."\n";
-         $header.='Content-Type:text/html; charset="utf-8"'."\n";
-         $header.='Content-Transfer-Encoding: 8bit';
+            $header.='From:"ActivistSoft.fr"<support@activistsoft.fr>'."\n";
+            $header.='Content-Type:text/html; charset="uft-8"'."\n";
+            $header.='Content-Transfer-Encoding: 8bit';
          $message = '
          <html>
          <head>
-           <title>Récupération de mot de passe - PrimFX.com</title>
+           <title>Récupération de mot de passe - ActivistSoft.fr</title>
            <meta charset="utf-8" />
          </head>
          <body>
@@ -45,11 +45,9 @@ if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
                <table width="600px">
                  <tr>
                    <td>
-
-                     <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
+                     <div align="center">Bonjour <b>'.$recup_mail.'</b>,</div>
                      Voici votre code de récupération: <b>'.$recup_code.'</b>
-                     A bientôt sur <a href="http://primfx.com/">PrimFX.com</a> !
-
+                     A bientôt sur <a href="http://activistsoft.fr/">ActivistSoft.fr</a> !
                    </td>
                  </tr>
                  <tr>
@@ -65,7 +63,7 @@ if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
          </body>
          </html>
          ';
-         mail($recup_mail, "Récupération de mot de passe - PrimFX.com", $message, $header);
+         mail($recup_mail, "Récupération de mot de passe - ActivistSoft.fr", $message, $header);
             header("Location:http://localhost/my-app/ActivistSoft/models/recuperate.php?section=code");
          } else {
             $error = "Cette adresse mail n'est pas enregistrée";
